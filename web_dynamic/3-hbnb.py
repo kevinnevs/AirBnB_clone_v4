@@ -36,7 +36,7 @@ def hbnb_filters(the_id=None):
     places = storage.all(Place).values()
     places = sorted(places, key=lambda k: k.name)
 
-    return render_template('1-hbnb.html',
+    return render_template('3-hbnb.html',
                            states=st_ct,
                            amenities=amenities,
                            places=places, cache_id=uuid.uuid4())

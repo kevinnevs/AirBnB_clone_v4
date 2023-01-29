@@ -5,7 +5,7 @@ const HOST ='0.0.0.0';
 
 function init() {
   const amenityObj = {};
-  $('.amenity .popover input').change(function () {
+  $('.amenities .popover input').change(function () {
     if ($(this).is(':checked')) {
       amenityObj[$(this).attr('data-name')] = $(this).attr('data-id');
     } else if ($(this).is(':not(:checked)')) {

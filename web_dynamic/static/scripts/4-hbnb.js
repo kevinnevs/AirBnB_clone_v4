@@ -2,9 +2,9 @@
 $(document).ready(init);
 
 const HOST ='0.0.0.0';
+const amenityObj = {};
 
 function init() {
-  const amenityObj = {};
   $('.amenities .popover input').change(function () {
     if ($(this).is(':checked')) {
       amenityObj[$(this).attr('data-name')] = $(this).attr('data-id');
@@ -16,7 +16,7 @@ function init() {
   });
 
   apiStatus();
-  fetchPlaces();
+  searchPlacesAmenities();
 }
 
 function apiStatus () {
@@ -30,13 +30,13 @@ function apiStatus () {
   });
 }
 
-function fetchPlaces() {
+function searchPLacesAmenities() {
   const PLACES_URL = 'http://$(HOST):5001/api/v1/places_search/';
   $.ajax({
     url: PLACES_URL,
     type: 'POST',
     headers: {'Content-Type': 'applications/json' },
-    data: JSON.stringify({}),
+    data: JSON.stringify({ amenities: Object.values(amenityObj) }),
     success: function (response) {
       for (const r of response) {
 	const article = ['<article>',
